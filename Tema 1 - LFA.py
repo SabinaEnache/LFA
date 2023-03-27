@@ -1,19 +1,23 @@
-#DFA ul accepta cuvinte care au un numar par de 0 si un numar par de 1
 def citeste_tranzitii(fisier):
     tranzitii = {}
     stari_finale = []
     with open(fisier, 'r') as file:
-        for line in file:
+        lines = file.readlines()
+        ok = 0
+        for line in lines:
             linie = line.strip().split()
-            if len(linie) == 3:
+            if ok <=len(lines)-2 :
                 stare1, cifra, stare2 = linie[0], linie[1], linie[2]
                 if stare1 not in tranzitii:
                     tranzitii[stare1] = {}
                 if cifra not in tranzitii[stare1]:
                     tranzitii[stare1][cifra] = set()
                 tranzitii[stare1][cifra].add(stare2)
-            elif len(linie) == 1:
-                stari_finale.append(linie[0])
+                ok+=1
+            else:
+                if ok == len(lines)-1:
+                    for l in line.strip().split():
+                        stari_finale.append(l)
     return tranzitii, stari_finale
 
 def DFA(input, tranzitii, stare_initiala, stari_finale):
