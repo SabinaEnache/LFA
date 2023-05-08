@@ -37,7 +37,7 @@ for word in words:
     if word[-1] == "Lambda":  # daca a ajuns intr-o stare finala - lambda
         if len(word) - 1 == n:  # daca are lungimea necesara
             final.append(word)
-    if word[-1] >= "a" and word[-1] <= "z":  # daca a ajuns intr-o stare finala
+    if word[-1] >= "a" and word[-1] <= "z":  # daca a ajuns intr-o stare finala          #pana la Z ca sa fie pe caz general (in exemplu, starile merg pana la E, dar pot fi si altele)
         final.append(word)
     elif word[-1] >= "A" and word[-1] <= "Z": # daca a ajuns intr-o stare potential finalas
         list = grm[word[-1]]
